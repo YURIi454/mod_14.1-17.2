@@ -27,4 +27,6 @@ if __name__ == "__main__":
     print(result[1][3].description)
     print(result[1][3].price)
     print(result[1][3].quantity)
+    print()
+
 

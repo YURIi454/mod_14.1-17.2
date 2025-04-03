@@ -1,5 +1,5 @@
 import json
-from typing import  Any
+from typing import Any
 
 from config import PATH_JSON
 from src.class_category import Category

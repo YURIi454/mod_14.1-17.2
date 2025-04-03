@@ -1,5 +1,5 @@
 from config import PATH_JSON
-from src.file_handler import read_json, create_obj_from_json
+from src.file_handler import create_obj_from_json, read_json
 
 
 def test_read_json() -> None:
