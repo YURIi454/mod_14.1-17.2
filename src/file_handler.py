@@ -8,6 +8,7 @@ from src.class_product import Product
 
 def read_json(path: str) -> Any:
     """Чтение  json"""
+
     with open(path, mode="r", encoding="UTF-8") as file:
         data = json.load(file)
         return data

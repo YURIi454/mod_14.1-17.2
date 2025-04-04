@@ -1,4 +1,6 @@
 def test_class_product(product_fixture) -> None:
+    """Тест класса Product"""
+
     assert product_fixture.name == "phone"
     assert product_fixture.description == "black, 1024GB"
     assert product_fixture.price == 5600.0

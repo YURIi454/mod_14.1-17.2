@@ -23,31 +23,19 @@ def product_fixture() -> Any:
 
 
 @pytest.fixture
-def json_file_fixture() -> list:
+def count_category_fixture() -> list:
     """Фикстура для проверки json."""
     return [
-        {
-            "name": "Car",
-            "description": "Made in China",
-            "products": [
-                {"name": "Zeekr 001 FR", "price": 6_250_000, "quantity": 1},
-                {"name": "Voyah Free", "price": 4_360_000, "quantity": 3},
-                {"name": "Geely Monjaro", "price": 3_230_000, "quantity": 14},
-                {"name": "Staria", "price": 5_250_000, "quantity": 10},
-                {"name": "Lixiang L9", "price": 5_360_000, "quantity": 3},
-                {"name": "TANK 700", "price": 7_230_000, "quantity": 4},
-            ],
-        },
-        {
-            "name": "Family car",
-            "description": "Made in Germany",
-            "products": [
-                {"name": "BMW X7", "price": 16_450_777, "quantity": 2},
-                {"name": "MB GLS MAY", "price": 46_777_777, "quantity": 1},
-                {"name": "MB VIANO", "price": 6_450_777, "quantity": 6},
-                {"name": "Maybach 62", "price": 86_777_777, "quantity": 1},
-                {"name": "Audi TT", "price": 7_450_777, "quantity": 2},
-                {"name": "MB GLS ", "price": 26_757_757, "quantity": 3},
-            ],
-        },
+        {"name": "Zeekr 001 FR", "description": "256GB", "price": 6_250_000, "quantity": 1},
+        {"name": "Voyah Free", "description": "256GB", "price": 4_360_000, "quantity": 3},
+        {"name": "Geely Monjaro", "description": "256GB", "price": 3_230_000, "quantity": 14},
+        {"name": "Staria", "description": "256GB", "price": 5_250_000, "quantity": 10},
+        {"name": "Lixiang L9", "description": "256GB", "price": 5_360_000, "quantity": 3},
+        {"name": "TANK 700", "description": "256GB", "price": 7_230_000, "quantity": 4},
+        {"name": "BMW X7", "description": "256GB", "price": 16_450_777, "quantity": 2},
+        {"name": "MB GLS MAY", "description": "256GB", "price": 46_777_777, "quantity": 1},
+        {"name": "MB VIANO", "description": "256GB", "price": 6_450_777, "quantity": 6},
+        {"name": "Maybach 62", "description": "256GB", "price": 86_777_777, "quantity": 1},
+        {"name": "Audi TT", "description": "256GB", "price": 7_450_777, "quantity": 2},
+        {"name": "MB GLS ", "description": "256GB", "price": 26_757_757, "quantity": 3},
     ]

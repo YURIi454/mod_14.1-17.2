@@ -1,4 +1,6 @@
 from config import PATH_JSON
+from src.class_category import Category
+from src.class_product import Product
 from src.file_handler import create_obj_from_json, read_json
 
 if __name__ == "__main__":
@@ -28,5 +30,3 @@ if __name__ == "__main__":
     print(result[1][3].price)
     print(result[1][3].quantity)
     print()
-
-
