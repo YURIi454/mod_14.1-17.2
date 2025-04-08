@@ -44,3 +44,7 @@ def test_add_product():
         [product1, product2, product3],
     )
     assert Category.add_product(category1, product3) == None
+
+
+def test_add_product_type(product_fixture):
+    assert isinstance(product_fixture, Product)
