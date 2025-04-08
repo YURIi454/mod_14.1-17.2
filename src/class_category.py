@@ -4,17 +4,23 @@ from src.class_product import Product
 class Category:
     """Класс категории"""
 
-    name: str
-    description: str
     category_count: int = 0
     product_count: int = 0
-    products: list[Product]
 
-    def __init__(self, name: str, description: str, products: list[Product]):
+    def __init__(self, name: str, description: str, products: list):
         """Инициализация класса категории"""
 
-        self.name = name
-        self.description = description
-        self.products = products
-        Category.category_count += 1
-        Category.product_count += len(products) if products else 0
+        self.name: str = name
+        self.description: str = description
+        self.__products: list = products
+
+    @property
+    def products(self):
+        product_info = ""
+        for elem in self.__products:
+            product_info += f"{elem.name}, {elem.price} руб. Остаток: {elem.quantity} шт.\n"
+        return product_info
+
+    def add_product(self, product: Product):
+        self.__products.append(product)
+        self.product_count += 1

@@ -25,6 +25,7 @@ def product_fixture() -> Any:
 @pytest.fixture
 def count_category_fixture() -> list:
     """Фикстура для проверки json."""
+
     return [
         {"name": "Zeekr 001 FR", "description": "256GB", "price": 6_250_000, "quantity": 1},
         {"name": "Voyah Free", "description": "256GB", "price": 4_360_000, "quantity": 3},
