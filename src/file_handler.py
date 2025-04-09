@@ -11,6 +11,7 @@ def read_json(path: str) -> Any:
 
     with open(path, mode="r", encoding="UTF-8") as file:
         data = json.load(file)
+
         return data
 
 
@@ -25,7 +26,7 @@ def create_obj_from_json(data_file) -> Any:
     for cat in data_file:
         for pro in cat["products"]:
             products.append(Product(**pro))
-        cat["products"] = categories
+        cat["products"] = products
         categories.append(Category(**cat))
 
     return categories, products
