@@ -48,3 +48,7 @@ def test_add_product():
 
 def test_add_product_type(product_fixture):
     assert isinstance(product_fixture, Product)
+
+
+def test_str_category(category_fixture):
+    assert category_fixture.__str__() == "phones количество 0 шт"

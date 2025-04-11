@@ -24,4 +24,7 @@ class Category:
     def add_product(self, product: Product):
         if isinstance(self.products, Product):
             self.__products.append(product)
-            self.product_count += 1
+            self.product_count += Product.quantity
+
+    def __str__(self):
+        return f"{self.name} количество {self.product_count} шт"
