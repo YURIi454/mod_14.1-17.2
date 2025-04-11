@@ -51,4 +51,4 @@ def test_add_product_type(product_fixture):
 
 
 def test_str_category(category_fixture):
-    assert category_fixture.__str__() == "phones количество 0 шт"
+    assert category_fixture.__str__() == "phones,  количество продуктов: 16 шт"

@@ -18,7 +18,7 @@ def test_new_product():
 
 
 def test_str_product(product_fixture):
-    assert product_fixture.__str__() == "phone , 5600 руб. , количество 23 шт"
+    assert product_fixture.__str__() == "phone , 5600 руб. Остаток: 23 шт"
 
 
 def test_add_product():
