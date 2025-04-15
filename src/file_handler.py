@@ -7,7 +7,7 @@ from src.class_product import Product
 
 
 def read_json(path: str) -> Any:
-    """Чтение  json"""
+    """Чтение  json файла по указанному пути."""
 
     with open(path, mode="r", encoding="UTF-8") as file:
         data = json.load(file)
@@ -16,7 +16,7 @@ def read_json(path: str) -> Any:
 
 
 def create_obj_from_json(data_file) -> Any:
-    """Добавление новых объектов классов."""
+    """Добавление новых объектов классов из файла."""
 
     data_file = read_json(path=PATH_JSON)
 

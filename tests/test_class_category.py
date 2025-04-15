@@ -1,5 +1,5 @@
 from src.class_category import Category
-from src.class_product import Product
+from src.class_product import LawnGrass, Product
 
 
 def test_class_category(category_fixture) -> None:
@@ -36,7 +36,7 @@ def test_price():
 def test_add_product():
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    product3 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
 
     category1 = Category(
         "Смартфоны",

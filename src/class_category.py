@@ -22,9 +22,13 @@ class Category:
         return product_info
 
     def add_product(self, product: Product):
-        if isinstance(self.products, Product):
+
+        if isinstance(product, Product):
             self.__products.append(product)
-            self.product_count += Product.quantity
+            self.product_count += 1
+
+        else:
+            raise TypeError
 
     def __str__(self):
         total_quantity = 0

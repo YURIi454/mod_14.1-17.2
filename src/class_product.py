@@ -40,3 +40,59 @@ class Product:
 
     def __add__(self, other):
         return self.price * self.quantity + other.price * other.quantity
+
+
+class Smartphone(Product):
+    """Класс "Смартфон" """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+    def __add__(self, other):
+
+        if not issubclass(type(other), Smartphone):
+            raise TypeError
+        else:
+            total_cost = self.price * self.quantity + other.price * other.quantity
+        return total_cost
+
+
+class LawnGrass(Product):
+    """Класс "Трава газонная" """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __add__(self, other):
+
+        if not issubclass(type(other), LawnGrass):
+            raise TypeError
+        else:
+            total_cost = self.price * self.quantity + other.price * other.quantity
+        return total_cost
