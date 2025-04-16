@@ -15,18 +15,22 @@ class Category:
         self.__products: list = products
 
     @property
-    def products(self):
+    def products(self) -> str:
         product_info = ""
         for elem in self.__products:
             product_info += f"{elem.name}, {elem.price} руб. Остаток: {elem.quantity} шт.\n"
         return product_info
 
-    def add_product(self, product: Product):
-        if isinstance(self.products, Product):
-            self.__products.append(product)
-            self.product_count += Product.quantity
+    def add_product(self, product: Product) -> None:
 
-    def __str__(self):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            self.product_count += 1
+
+        else:
+            raise TypeError
+
+    def __str__(self) -> str:
         total_quantity = 0
         for product in self.__products:
             if self.name:

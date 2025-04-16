@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Product:
     """Класс продукт."""
 
@@ -15,13 +18,13 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, new_product: dict):
+    def new_product(cls, new_product: dict) -> Any:
         """Метод создания нового объекта Product"""
         new_pro = cls(**new_product)
         return new_pro
 
     @property
-    def price(self):
+    def price(self) -> float:
         """Геттер"""
 
         return self.__price
@@ -35,8 +38,52 @@ class Product:
         else:
             self.__price = set_price
 
-    def __str__(self):
+    def __str__(self) -> str:
+
         return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
 
     def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
+
+        if type(self) is type(other):
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError
+
+
+class Smartphone(Product):
+    """Класс "Смартфон" """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        efficiency: float,
+        model: str,
+        memory: int,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    """Класс "Трава газонная" """
+
+    def __init__(
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
+    ):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color

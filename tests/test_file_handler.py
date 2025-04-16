@@ -35,7 +35,7 @@ def test_read_json() -> None:
 def test_create_obj_from_json() -> None:
     """Тест создание объектов класса."""
 
-    assert create_obj_from_json(read_json(PATH_JSON))[0][0].name == "Смартфоны"
-    assert create_obj_from_json(read_json(PATH_JSON))[1][0].description == "256GB, Серый цвет, 200MP камера"
-    assert create_obj_from_json(read_json(PATH_JSON))[1][0].quantity == 5
-    assert create_obj_from_json(read_json(PATH_JSON))[1][0].price == 180000.0
+    assert create_obj_from_json(PATH_JSON)[0][0].name == "Смартфоны"
+    assert create_obj_from_json(PATH_JSON)[1][0].description == "256GB, Серый цвет, 200MP камера"
+    assert create_obj_from_json(PATH_JSON)[1][0].quantity == 5
+    assert create_obj_from_json(PATH_JSON)[1][0].price == 180000.0

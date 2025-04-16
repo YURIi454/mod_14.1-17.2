@@ -3,7 +3,7 @@ from typing import Any
 import pytest
 
 from src.class_category import Category
-from src.class_product import Product
+from src.class_product import LawnGrass, Product, Smartphone
 
 
 @pytest.fixture
@@ -40,3 +40,16 @@ def count_category_fixture() -> list:
         {"name": "Audi TT", "description": "256GB", "price": 7_450_777, "quantity": 2},
         {"name": "MB GLS ", "description": "256GB", "price": 26_757_757, "quantity": 3},
     ]
+
+
+@pytest.fixture
+def smartphone() -> Any:
+    """Фикстура классов "Смартфон" и "Трава газонная" """
+    return Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
+
+@pytest.fixture
+def grass() -> Any:
+    return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
