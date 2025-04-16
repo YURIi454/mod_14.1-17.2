@@ -1,7 +1,6 @@
 import json
 from typing import Any
 
-from config import PATH_JSON
 from src.class_category import Category
 from src.class_product import Product
 
@@ -15,15 +14,16 @@ def read_json(path: str) -> Any:
         return data
 
 
-def create_obj_from_json(data_file) -> Any:
+def create_obj_from_json(path: str) -> Any:
     """Добавление новых объектов классов из файла."""
 
-    data_file = read_json(path=PATH_JSON)
+    with open(path, mode="r", encoding="UTF-8") as file:
+        data = json.load(file)
 
     categories = []
     products = []
 
-    for cat in data_file:
+    for cat in data:
         for pro in cat["products"]:
             products.append(Product(**pro))
         cat["products"] = products

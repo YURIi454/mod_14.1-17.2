@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Product:
     """Класс продукт."""
 
@@ -15,13 +18,13 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, new_product: dict):
+    def new_product(cls, new_product: dict) -> Any:
         """Метод создания нового объекта Product"""
         new_pro = cls(**new_product)
         return new_pro
 
     @property
-    def price(self):
+    def price(self) -> float:
         """Геттер"""
 
         return self.__price
@@ -35,11 +38,15 @@ class Product:
         else:
             self.__price = set_price
 
-    def __str__(self):
+    def __str__(self) -> str:
+
         return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
 
     def __add__(self, other):
-        return self.price * self.quantity + other.price * other.quantity
+
+        if type(self) is type(other):
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError
 
 
 class Smartphone(Product):
@@ -62,14 +69,6 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
-    def __add__(self, other):
-
-        if not issubclass(type(other), Smartphone):
-            raise TypeError
-        else:
-            total_cost = self.price * self.quantity + other.price * other.quantity
-        return total_cost
-
 
 class LawnGrass(Product):
     """Класс "Трава газонная" """
@@ -88,11 +87,3 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-    def __add__(self, other):
-
-        if not issubclass(type(other), LawnGrass):
-            raise TypeError
-        else:
-            total_cost = self.price * self.quantity + other.price * other.quantity
-        return total_cost
