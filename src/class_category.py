@@ -14,6 +14,13 @@ class Category:
         self.description: str = description
         self.__products: list = products
 
+    def __str__(self) -> str:
+        total_quantity = 0
+        for product in self.__products:
+            if self.name:
+                total_quantity += product.quantity
+        return f"{self.name},  количество продуктов: {total_quantity} шт"
+
     @property
     def products(self) -> str:
         product_info = ""
@@ -29,10 +36,3 @@ class Category:
 
         else:
             raise TypeError
-
-    def __str__(self) -> str:
-        total_quantity = 0
-        for product in self.__products:
-            if self.name:
-                total_quantity += product.quantity
-        return f"{self.name},  количество продуктов: {total_quantity} шт"

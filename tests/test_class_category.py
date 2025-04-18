@@ -43,7 +43,7 @@ def test_add_product() -> None:
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product1, product2, product3],
     )
-    assert Category.add_product(category1, product3) == None
+    assert Category.add_product(category1, product3) is None
 
 
 def test_add_product_type(product_fixture: Product) -> None:
