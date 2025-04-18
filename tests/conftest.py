@@ -44,7 +44,7 @@ def count_category_fixture() -> list:
 
 @pytest.fixture
 def smartphone() -> Any:
-    """Фикстура классов "Смартфон" и "Трава газонная" """
+    """Фикстура класса "Смартфон" """
     return Smartphone(
         "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
     )
@@ -52,4 +52,10 @@ def smartphone() -> Any:
 
 @pytest.fixture
 def grass() -> Any:
+    """Фикстура класса "Трава газонная" """
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def order() -> Any:
+    return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 3, 90.3, "Note 11", 1024, "Синий")

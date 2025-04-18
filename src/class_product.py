@@ -1,8 +1,20 @@
+from abc import ABC, abstractmethod
 from typing import Any
 
+from src.classes_mixing import PrintConsoleMixing
 
-class Product:
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def info_class(self):
+        pass
+
+
+class Product(PrintConsoleMixing, BaseProduct):
     """Класс продукт."""
+
+    __slots__ = ("name", "description", "__price", "quantity")
 
     name: str
     description: str
@@ -16,11 +28,27 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
+
+    def __str__(self) -> str:
+
+        return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
+
+    def __add__(self, other: Any) -> Any:
+
+        if type(self) is type(other):  # is или ==
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError
+
+    def info_class(self) -> str:
+        return f"{self.__class__.__name__}"
 
     @classmethod
     def new_product(cls, new_product: dict) -> Any:
         """Метод создания нового объекта Product"""
+
         new_pro = cls(**new_product)
+
         return new_pro
 
     @property
@@ -37,16 +65,6 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = set_price
-
-    def __str__(self) -> str:
-
-        return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
-
-    def __add__(self, other):
-
-        if type(self) is type(other):
-            return self.price * self.quantity + other.price * other.quantity
-        raise TypeError
 
 
 class Smartphone(Product):
