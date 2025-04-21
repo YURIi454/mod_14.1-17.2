@@ -2,8 +2,9 @@ from typing import Any
 
 import pytest
 
-from src.class_category import Category
-from src.class_product import LawnGrass, Product, Smartphone
+from src.category import Category
+from src.exception_handler import CustomError
+from src.product import LawnGrass, Product, Smartphone
 
 
 @pytest.fixture
@@ -19,6 +20,7 @@ def category_fixture() -> Any:
 @pytest.fixture
 def product_fixture() -> Any:
     """Фикстура для класса продукт."""
+
     return Product("phone", "black, 1024GB", 5600.0, 23)
 
 
@@ -58,4 +60,11 @@ def grass() -> Any:
 
 @pytest.fixture
 def order() -> Any:
+    """Фикстура класса "Заказ" """
     return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 3, 90.3, "Note 11", 1024, "Синий")
+
+
+@pytest.fixture
+def custom_error() -> Any:
+    """Фикстура класса "CustomError" """
+    return CustomError("Тест пройден успешно!")

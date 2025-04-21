@@ -1,13 +1,15 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-from src.classes_mixing import PrintConsoleMixing
+from src.exception_handler import CustomError
+from src.mixing import PrintConsoleMixing
 
 
 class BaseProduct(ABC):
 
     @abstractmethod
-    def info_class(self):
+    def info_class(self) -> None:
+        """Информация о классе."""
         pass
 
 
@@ -27,21 +29,29 @@ class Product(PrintConsoleMixing, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+
+        if quantity == 0:
+            raise CustomError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
         super().__init__()
 
     def __str__(self) -> str:
+        """Вывод общего количества продуктов на складе."""
 
         return f"{self.name} , {int(self.__price)} руб. Остаток: {self.quantity} шт"
 
     def __add__(self, other: Any) -> Any:
+        """Вывод полной стоимости продуктов на складе."""
 
-        if type(self) is type(other):  # is или ==
+        if type(self) is type(other):
             return self.price * self.quantity + other.price * other.quantity
-        raise TypeError
+        raise CustomError()
 
-    def info_class(self) -> str:
-        return f"{self.__class__.__name__}"
+    def info_class(self) -> None:
+        """Информация о классе."""
+
+        pass
 
     @classmethod
     def new_product(cls, new_product: dict) -> Any:

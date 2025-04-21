@@ -1,5 +1,5 @@
-from src.class_order import Order
-from src.class_product import Smartphone
+from src.order import Order
+from src.product import Smartphone
 
 
 def test_class_order(order: Smartphone) -> None:

@@ -1,4 +1,4 @@
-from src.class_product import Product
+from src.product import Product
 
 
 class Category:
@@ -15,20 +15,27 @@ class Category:
         self.__products: list = products
 
     def __str__(self) -> str:
+        """Вывод информации о продукте."""
+
         total_quantity = 0
         for product in self.__products:
             if self.name:
                 total_quantity += product.quantity
+
         return f"{self.name},  количество продуктов: {total_quantity} шт"
 
     @property
     def products(self) -> str:
+        """Вывод информации о продукте."""
+
         product_info = ""
         for elem in self.__products:
             product_info += f"{elem.name}, {elem.price} руб. Остаток: {elem.quantity} шт.\n"
+
         return product_info
 
     def add_product(self, product: Product) -> None:
+        """Добавление продукта."""
 
         if isinstance(product, Product):
             self.__products.append(product)
@@ -36,3 +43,15 @@ class Category:
 
         else:
             raise TypeError
+
+    def middle_price(self) -> float:
+        """Подсчёт средней цены."""
+
+        mid_price_list = []
+        for elem in self.__products:
+            mid_price_list.append(elem.price)
+
+        if not len(mid_price_list):
+            return 0.0
+
+        return float(round(sum(mid_price_list) / len(mid_price_list), 2))
