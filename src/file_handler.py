@@ -1,8 +1,8 @@
 import json
 from typing import Any
 
-from src.class_category import Category
-from src.class_product import Product
+from src.category import Category
+from src.product import Product
 
 
 def read_json(path: str) -> Any:

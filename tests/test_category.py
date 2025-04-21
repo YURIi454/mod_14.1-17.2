@@ -1,5 +1,5 @@
-from src.class_category import Category
-from src.class_product import LawnGrass, Product
+from src.category import Category
+from src.product import LawnGrass, Product
 
 
 def test_class_category(category_fixture: Category) -> None:
@@ -28,12 +28,16 @@ def test_counters(count_category_fixture: list[dict]) -> None:
 
 
 def test_price() -> None:
+    """Тест вывода цены."""
+
     prod = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
     prod.price = 125
     assert prod.price == 125
 
 
 def test_add_product() -> None:
+    """Тест добавления продукта."""
+
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
@@ -47,8 +51,18 @@ def test_add_product() -> None:
 
 
 def test_add_product_type(product_fixture: Product) -> None:
+    """Тест проверки типа добавляемого продукта."""
+
     assert isinstance(product_fixture, Product)
 
 
 def test_str_category(category_fixture: Category) -> None:
+    """Тест вывода информации о продукте."""
+
     assert category_fixture.__str__() == "phones,  количество продуктов: 16 шт"
+
+
+def test_middle_price(category_fixture: Category) -> None:
+    """Тест счётчика средней цены."""
+
+    assert category_fixture.middle_price() == 13062.5

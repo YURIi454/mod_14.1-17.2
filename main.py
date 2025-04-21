@@ -1,64 +1,40 @@
-from src.class_category import Category
-from src.class_order import Order
-from src.class_product import LawnGrass, Smartphone, Product
+from src.category import Category
+from src.exception_handler import CustomError
+from src.order import Order
+from src.product import LawnGrass, Product, Smartphone
 
 if __name__ == "__main__":
+    try:
+        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    except CustomError as e:
+        print(
+            "Возникла ошибка ValueError прерывающая работу программы при попытке добавить продукт с "
+            "нулевым количеством"
+        )
+    else:
+        print("Не возникла ошибка ValueError при попытке добавить продукт с нулевым количеством")
+
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    grass2 = LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+    category1 = Category("Смартфоны", "Категория смартфонов", [product1, product2, product3, grass1, grass2])
 
-    print(product1.name)
-    print(product1.description)
-    print(product1.price)
-    print(product1.quantity)
+    print(category1.middle_price())
 
-    print(product2.name)
-    print(product2.description)
-    print(product2.price)
-    print(product2.quantity)
+    category_empty = Category("Пустая категория", "Категория без продуктов", [])
+    print(category_empty.middle_price())
 
-    print(product3.name)
-    print(product3.description)
-    print(product3.price)
-    print(product3.quantity)
+    print('\n * * Работа класса "Заказ" * * \n')
 
-    category1 = Category("Смартфоны",
-                         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-                         [product1, product2, product3])
+    ord_prod = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 3, 90.3, "Note 11", 1024, "Синий")
+    ord_prod_1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    ord_prod_2 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
-    print(category1.name == "Смартфоны")
-    print(category1.description)
-    print(len(category1.products))
-    print(category1.category_count)
-    print(category1.product_count)
-
-    product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
-    category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
-                         [product4])
-
-    print(category2.name)
-    print(category2.description)
-    print(len(category2.products))
-    print(category2.products)
-
-    print(Category.category_count)
-    print(Category.product_count)
-
-    ord_prod = Smartphone("Xiaomi Redmi Note 11",
-                          "1024GB, Синий",
-                          31000.0, 3,
-                          90.3, "Note 11",
-                          1024, "Синий")
-    ord_prod_1 = LawnGrass("Газонная трава",
-                           "Элитная трава для газона",
-                           500.0, 20, "Россия",
-                           "7 дней", "Зеленый")
-    ord_prod_2 = Product("Samsung Galaxy S23 Ultra",
-                         "256GB, Серый цвет, 200MP камера",
-                         180000.0, 5)
+    ord_prod_3 = Category("Шина", "295/65R24", [])
 
     print(Order.get_info_order(ord_prod, 14.0))
     print(Order.get_info_order(ord_prod_1, 7.5))
     print(Order.get_info_order(ord_prod_2, 12.0))
-    print(Order.get_info_order(category1,22.0))
+    print(Order.get_info_order(ord_prod_3, 22.0))
